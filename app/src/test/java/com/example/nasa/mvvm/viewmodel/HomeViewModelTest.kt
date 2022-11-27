@@ -85,16 +85,4 @@ class HomeViewModelTest {
         }
     }
 
-
-    @Test
-    fun `sendIntent - FetchFavList`() {
-        coEvery { mockInsertFavUseCase.getFavList() } returns flow { }
-        runTest {
-            subject.sendIntent(HomeViewModelIntent.FetchFavList)
-
-            subject.getStateFlow().test {
-                expectThat(awaitItem()).isA<HomeViewModelState.FetchFavListData>()
-            }
-        }
-    }
 }
