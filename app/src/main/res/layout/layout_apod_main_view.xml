@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="resultApod"
+            type="com.example.nasa.mvvm.model.NasaAOPD" />
+    </data>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp">
+
+        <ProgressBar
+            android:id="@+id/loader"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:visibility="gone" />
+
+        <LinearLayout
+            android:id="@+id/layout_main"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:visibility="visible">
+
+            <FrameLayout
+                android:id="@+id/lt_apod_image_container"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/iv_image_of_day"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:adjustViewBounds="true"
+                    tools:src="@drawable/ring_cassini" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tv_apod_date"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:padding="@dimen/dp_5"
+                    android:text="@{@string/text_apod_date(resultApod.imageDate)}"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/sp_14"
+                    tools:text="Date: 2019-03-25" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/iv_add_to_fav"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end"
+                    android:padding="@dimen/dp_5"
+                    app:srcCompat="@drawable/ic_like" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:layout_gravity="center"
+                    android:visibility="@{resultApod.isVideo ? View.VISIBLE : View.GONE}"
+                    app:srcCompat="@drawable/ic_play" />
+
+            </FrameLayout>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_apod_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_5"
+                android:gravity="center"
+                android:text="@{resultApod.imageTitle}"
+                android:textSize="@dimen/sp_16"
+                tools:text="Arp 194: Merging Galaxy Group" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_apod_info"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_10"
+                android:gravity="center_horizontal"
+                android:text="@{resultApod.imageExplanation}"
+                android:textSize="@dimen/sp_14"
+                tools:text="Why are stars forming in the bridge between these colliding galaxies? Usually when galaxies crash, star formation is confined to galaxy disks or tidal tails. In Arp 194, though, there are bright knots of young stars right in a connecting bridge." />
+
+        </LinearLayout>
+    </FrameLayout>
+</layout>

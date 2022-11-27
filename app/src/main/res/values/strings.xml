@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">NASA</string>
+    <string name="text_year">Year</string>
+    <string name="text_month">Month</string>
+    <string name="text_day">Day</string>
+    <string name="text_search">Search</string>
+    <string name="text_apod_date">Date: %1$s</string>
+    <string name="error_text_invalid">Invalid</string>
+    <string name="text_header_pick_date"><u>Click here to search for the picture of the day.</u></string>
+    <string name="text_pick_date">Pick a date</string>
+    <string name="please_select_a_date">Please select a date</string>
+    <string name="text_dismiss">Dismiss</string>
+    <string name="text_go_to_fav"><u>Go to Favourites</u></string>
+    <string name="text_added_to_fav">Added to Favourites Successfully.</string>
+    <string name="text_ok">OK</string>
+</resources>
